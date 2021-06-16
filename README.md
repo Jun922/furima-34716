@@ -21,7 +21,7 @@
 | item_shipping_fee_status | integer    | not: null |
 | item_prefecture          | integer    | not: null |
 | item_scheduled_delivery  | integer    | not: null |
-| tem_price                | integer    | not: null |
+| item_price               | integer    | not: null |
 | add_tax_price            | integer    | not: null |
 | profit                   | integer    | not: null |
 | user                     | references |           |
