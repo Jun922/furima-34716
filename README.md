@@ -13,6 +13,7 @@
 | birthday               | date       | null: false                |
 ### Association
 has_many: item
+has_one: buyer
 
 ## items テーブル
 | Column                 | Type       | Options           |
@@ -35,7 +36,7 @@ belongs_to: user
 | portal_code              | string     | null: false       |
 | prefecture_id            | integer    | null: false       |
 | city                     | string     | null: false       |
-| address                  | string     | foreign_key: true |
+| address                  | string     | null: false       |
 | building                 | string     |                   |
 | phone_number             | string     | foreign_key: true |
 | buyer                    | references | foreign_key: true |
@@ -46,7 +47,7 @@ belongs_to: buyer
 | Column                   | Type       | Options           |
 | ------------------------ | ---------- | ----------------- |
 | item                     | references | foreign_key: true |
-| order                    | references | foreign_key: true |
+| user                     | references | foreign_key: true |
 ### Association
-has_one: order
+belongs_to: user
 belongs_to: item

@@ -46,13 +46,13 @@
                         <mxPoint x="330" y="210" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="25" value="has_many: item" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
-                    <mxGeometry x="170" y="35" width="100" height="20" as="geometry"/>
+                <mxCell id="25" value="has_many: item&lt;br&gt;has_one: buyer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="30" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="belongs_to: uer&lt;br&gt;has_one: buyer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="610" y="25" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="belong_to: item&lt;br&gt;has_one: order" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                <mxCell id="27" value="belongs_to: item&lt;br&gt;has_one: order" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="10" y="480" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="28" value="belongs_to: buyer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
