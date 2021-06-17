@@ -28,6 +28,7 @@ has_one: buyer
 | user                   | references | foreign_key: true |
 ### Association
 has_one: buyer
+has_one: order
 belongs_to: user
 
 ## orders テーブル
@@ -42,6 +43,7 @@ belongs_to: user
 | buyer                    | references | foreign_key: true |
 ### Association
 belongs_to: buyer
+belongs_to: item
 
 ## buyers テーブル
 | Column                   | Type       | Options           |
