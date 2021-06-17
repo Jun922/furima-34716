@@ -12,8 +12,8 @@
 | first_name_kana        | string     | null: false                |
 | birthday               | date       | null: false                |
 ### Association
-has_many: item
-has_one: buyer
+has_many: items
+has_many: buyings
 
 ## items テーブル
 | Column                 | Type       | Options           |
@@ -21,15 +21,25 @@ has_one: buyer
 | name                   | string     | null: false       |
 | info                   | text       | null: false       |
 | category_id            | integer    | null: false       |
+| sales-status_id        | integer    | null: false       |
 | shipping_fee_status_id | integer    | null: false       |
 | prefecture_id          | integer    | null: false       |
 | scheduled_delivery_id  | integer    | null: false       |
 | price                  | integer    | null: false       |
 | user                   | references | foreign_key: true |
 ### Association
-has_one: buyer
-has_one: order
+has_one: buying
 belongs_to: user
+
+## buyings テーブル
+| Column                   | Type       | Options           |
+| ------------------------ | ---------- | ----------------- |
+| item                     | references | foreign_key: true |
+| user                     | references | foreign_key: true |
+### Association
+belongs_to: user
+belongs_to: item
+has_one: order
 
 ## orders テーブル
 | Column                   | Type       | Options           |
@@ -40,16 +50,6 @@ belongs_to: user
 | address                  | string     | null: false       |
 | building                 | string     |                   |
 | phone_number             | string     | foreign_key: true |
-| buyer                    | references | foreign_key: true |
+| buying                   | references | foreign_key: true |
 ### Association
-belongs_to: buyer
-belongs_to: item
-
-## buyers テーブル
-| Column                   | Type       | Options           |
-| ------------------------ | ---------- | ----------------- |
-| item                     | references | foreign_key: true |
-| user                     | references | foreign_key: true |
-### Association
-belongs_to: user
-belongs_to: item
+belongs_to: buying
