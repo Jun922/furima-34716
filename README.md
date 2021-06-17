@@ -11,7 +11,8 @@
 | family_name_kana       | string     | null: false                |
 | first_name_kana        | string     | null: false                |
 | birthday               | date       | null: false                |
-| item                   | references | foreign_key: true          |
+### Association
+has_many: item
 
 ## items テーブル
 | Column                 | Type       | Options           |
@@ -22,9 +23,11 @@
 | shipping_fee_status_id | integer    | null: false       |
 | prefecture_id          | integer    | null: false       |
 | scheduled_delivery_id  | integer    | null: false       |
-| price                  | string     | null: false       |
+| price                  | integer    | null: false       |
 | user                   | references | foreign_key: true |
-| buyer                  | references | foreign_key: true |
+### Association
+has_one: buyer
+belongs_to: user
 
 ## orders テーブル
 | Column                   | Type       | Options           |
@@ -36,9 +39,14 @@
 | building                 | string     |                   |
 | phone_number             | string     | foreign_key: true |
 | buyer                    | references | foreign_key: true |
+### Association
+belongs_to: buyer
 
 ## buyers テーブル
 | Column                   | Type       | Options           |
 | ------------------------ | ---------- | ----------------- |
 | item                     | references | foreign_key: true |
 | order                    | references | foreign_key: true |
+### Association
+has_one: order
+belongs_to: item

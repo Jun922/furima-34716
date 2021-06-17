@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="TWhcmumEPXo1Qi4w5jTb" name="ページ1">
-        <mxGraphModel dx="1725" dy="627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1555" dy="627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -55,8 +55,8 @@
                 <mxCell id="27" value="belong_to: item&lt;br&gt;has_one: order" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="10" y="480" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="belong_to: buyer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
-                    <mxGeometry x="610" y="390" width="100" height="20" as="geometry"/>
+                <mxCell id="28" value="belongs_to: buyer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="605" y="390" width="110" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
