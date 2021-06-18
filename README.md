@@ -4,7 +4,7 @@
 | Column                 | Type       | Options                    |
 | ---------------------- | ---------- | -------------------------- |
 | nickname               | string     | null: false                |
-| email                  | string     | null]: false, unique: true |
+| email                  | string     | null: false, unique: true  |
 | encrypted_password     | string     | null: false                |
 | family_name            | string     | null: false                |
 | first_name             | string     | null: false                |
@@ -49,7 +49,7 @@ has_one: order
 | city                     | string     | null: false       |
 | address                  | string     | null: false       |
 | building                 | string     |                   |
-| phone_number             | string     | foreign_key: true |
+| phone_number             | string     | null: false       |
 | buying                   | references | foreign_key: true |
 ### Association
 belongs_to: buying
