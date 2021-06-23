@@ -7,11 +7,9 @@ class User < ApplicationRecord
   validates :nickname,           presence: true
   validates :email,              presence: true
   validates :encrypted_password, presence: true, length: { minimum: 6 }
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一ー-龥々]\z/} do
     validates :family_name
     validates :first_name
-  end
-  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/} do
     validates :family_name_kana
     validates :first_name_kana
   end
