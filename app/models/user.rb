@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :birthday
   end
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/} do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ } do
     validates :family_name
     validates :first_name
   end
@@ -19,8 +19,5 @@ class User < ApplicationRecord
     validates :first_name_kana
   end
 
-  with_options length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i} do
-    validates :password
-    validates :password_confirmation
-  end
+  validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
 end
