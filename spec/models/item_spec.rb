@@ -13,12 +13,12 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格は、¥300~¥9,999,999の間のみ登録できること' do
-        @item.price = "2000"
+        @item.price = 2000
         expect(@item).to be_valid
       end
 
       it '販売価格は半角数字のみ登録できること' do
-        @item.price = "2000"
+        @item.price = 2000
         expect(@item).to be_valid
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'categoryが1では登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category must be other than 1"
       end
@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'sales statusが1では登録できない' do
-        @item.sales_status_id = '1'
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Sales status must be other than 1"
       end
@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'shipping fee statusが1では登録できない' do
-        @item.shipping_fee_status_id = '1'
+        @item.shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping fee status must be other than 1"
       end
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'prefectureが1では登録できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture must be other than 1"
       end
@@ -92,7 +92,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'scheduled deliveryが1では登録できない' do
-        @item.scheduled_delivery_id = '1'
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Scheduled delivery must be other than 1"
       end
@@ -104,25 +104,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが空では登録できない' do
-        @item.price = ''
+        @item.price = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is invalid"
       end
 
-      it 'priceが半角数字以外では登録できない' do
-        @item.price = '３００'
+      it 'priceが半角英数混合では登録できない' do
+        @item.price = "a1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is not a number"
+      end
+
+      it 'priceが半角英語だけでは登録できない' do
+        @item.price = "abc"
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is not a number"
       end
 
       it 'priceが9999999より大きくては登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
       end
 
       it 'priceが300未満では登録できない' do
-        @item.price = '200'
+        @item.price = 200
         @item.valid?
         expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
       end
