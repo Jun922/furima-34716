@@ -8,16 +8,15 @@ class User < ApplicationRecord
     validates :nickname
     validates :birthday
   end
-
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ } do
     validates :family_name
     validates :first_name
   end
-
   with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
     validates :family_name_kana
     validates :first_name_kana
   end
-
   validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
+
+  has_many :items
 end
