@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe OrderCard, type: :model do
-  before do
-    buying = FactoryBot.build(:buying)
-    @order_card = FactoryBot.build(:order_card)
-  end
-
-
   describe '商品購入データ保存' do
+    before do
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @order_card = FactoryBot.build(:order_card, user_id: user.id, item_id: item.id)
+      sleep 0.1
+    end
+
   #正常系
     context '購入履歴を保存できる場合' do
       it '全ての項目の入力が存在すれば登録できること' do
@@ -67,19 +68,37 @@ RSpec.describe OrderCard, type: :model do
       it 'phone_numberは数字でないと登録できない' do
         @order_card.phone_number = '0000000000a'
         @order_card.valid?
-        expect(@order_card.errors.full_messages).to include("Phone number is only 10 or 11 integer")
+        expect(@order_card.errors.full_messages).to include("Phone number is only 11 integer")
       end
 
       it '電話番号が1２桁以上だと登録できない' do
         @order_card.phone_number = '123412341234'
         @order_card.valid?
-        expect(@order_card.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@order_card.errors.full_messages).to include("Phone number is only 11 integer")
+      end
+
+      it '電話番号が9桁以下だと登録できない' do
+        @order_card.phone_number = '1'
+        @order_card.valid?
+        expect(@order_card.errors.full_messages).to include("Phone number is only 11 integer")
       end
 
       it "tokenが空では登録できないこと" do
         @order_card.token = ''
         @order_card.valid?
         expect(@order_card.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it "user_idが空では登録できないこと" do
+        @order_card.user_id = nil
+        @order_card.valid?
+        expect(@order_card.errors.full_messages).to include("User can't be blank")  
+      end
+
+      it "item_idが空では登録できないこと" do
+        @order_card.item_id = nil
+        @order_card.valid?
+        expect(@order_card.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
