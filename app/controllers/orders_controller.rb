@@ -3,19 +3,17 @@ class OrdersController < ApplicationController
   before_action :move_to_root_path, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order_card = OrderCard.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_card = OrderCard.new(order_params)
     if @order_card.valid?
       pay_item
       @order_card.save
       return redirect_to root_path
     else
-      render "orders/index"
+      render "index"
     end
   end
 
@@ -25,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],

@@ -29,13 +29,13 @@ RSpec.describe OrderCard, type: :model do
       end
 
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        @order_card.postal_code = 1234567
+        @order_card.postal_code = '1234567'
         @order_card.valid?
         expect(@order_card.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
 
       it 'prefecture_idが空では保存できないこと' do
-        @order_card.prefecture_id = nil
+        @order_card.prefecture_id = ''
         @order_card.valid?
         expect(@order_card.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -71,13 +71,13 @@ RSpec.describe OrderCard, type: :model do
       end
 
       it '電話番号が1２桁以上だと登録できない' do
-        @order_card.phone_number = 123412341234
+        @order_card.phone_number = '123412341234'
         @order_card.valid?
         expect(@order_card.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
 
       it "tokenが空では登録できないこと" do
-        @order_card.token = nil
+        @order_card.token = ''
         @order_card.valid?
         expect(@order_card.errors.full_messages).to include("Token can't be blank")
       end

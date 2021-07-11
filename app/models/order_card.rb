@@ -9,6 +9,8 @@ class OrderCard
     validates :address
     validates :phone_number,  format: {with: /\A\d{10,11}\z/, message: "is only 10 or 11 integer"}, length: { maximum: 11 }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
