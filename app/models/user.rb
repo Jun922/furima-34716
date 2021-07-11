@@ -7,6 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birthday
+    validates :password, length: { minimum: 6 }, format: {with: /\A[a-z0-9]+\z/i, message: "is invalid. Input half-width characters."}
   end
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ } do
     validates :family_name
@@ -16,7 +17,7 @@ class User < ApplicationRecord
     validates :family_name_kana
     validates :first_name_kana
   end
-  validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
 
   has_many :items
+  has_many :buyings
 end
